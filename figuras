@@ -1,0 +1,135 @@
+main
+
+
+using System;
+
+class Program
+{
+  static void Main(string[] args)
+  {
+    string alternativa;
+
+    Console.Write(" Digite (sim) para começa ou qualquer outra coisa para fechar: ");
+    alternativa = Console.ReadLine();
+    if(alternativa == "sim")
+    {
+      do{
+        Console.Write("coloca a base e depois venha com a altura.");
+        Retangulo ret = new Retangulo(largura): Convert.ToDouble(Console.ReadLine()), altura: Convert.ToDouble(Console.ReadLine()));
+
+        
+        Console.WriteLine("Base:{0:0.0}", ret.Largura);
+        Console.WriteLine("Altura:{0:0.0}", ret.Altura);
+        Console.WriteLine("Área:{0:0.0}", ret.Area);
+        Console.WriteLine("Perímetro{0:0.0}", ret.Perimetro);
+
+        Console.Write("Digite (sim) para começa ou qualquer outra coisa para fechar: ");
+        alternativa = Console.ReadLine();
+      }
+      while (alternativa == "sim");
+    }
+    else
+    {
+      Console.WriteLine("Obrigado e volte sempre :) !");
+    }
+  }
+}
+
+
+
+
+
+figura!!!!!!!!!!!!!!!!
+
+using System;
+
+public class Figura
+{
+    protected double _area; // atributo
+    protected double _perimetro; // atributo
+
+    public double Area // propriedade
+    {
+        // leitura do atributo correspondente
+        get { return this._area; }
+    }
+
+    public double Perimetro // propriedade
+    {
+        // leitura do atributo correspondente
+        get { return this._perimetro; }
+    }
+}
+
+
+retangulo!!!!!!!!!!!!!!
+
+using System;
+
+public class Retangulo : Figura 
+{
+    private double _altura; 
+    private double _largura;
+    
+    public double Altura 
+    {
+        
+        get
+        {
+            return this._altura;
+        }
+        
+        
+        set
+        {
+            if (value <= 0)
+            {
+                Console.Write("Altura inválida");
+            }
+            else
+            {
+                this._altura = value;
+                this.mudarPerimetro();
+                this.mudarArea();
+            }
+        }
+    }
+    public double Largura 
+    {
+        
+        get
+        {
+            return this._largura;
+        }
+        
+        
+        set
+        {
+            if (value <= 0)
+            {
+                Console.WriteLine("Base inválida");
+            }
+            else
+            {
+                this._largura = value;
+                this.mudarPerimetro();
+                this.mudarArea();
+            }
+        }
+    }
+    public Retangulo(double altura, double largura)
+    {
+        
+        this.Altura = altura;
+        this.Largura = largura;
+    }
+    private void mudarPerimetro()
+    {
+        this._perimetro = 2 *(this._largura + this._altura);
+    }
+    private void mudarArea()
+    {
+        this._area = this._largura * this._altura;
+    }
+}
+
