@@ -1,0 +1,221 @@
+main
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
+
+class MainClass {
+  
+  public static void Main (string[] args) 
+  {
+    Loja carrinho = new Loja ();
+
+    Console.Write ("Hello World");
+    Console.WriteLine ("\r\nSeja bem-vinde a melhor loja de Item mágicos\r\n");
+
+    Console.Write("coloca o seu nome e depois entre com a sua quantidade de moeda.\n");
+    Personagem Cliente = new Personagem(nome: Console.ReadLine(), moedas: Convert.ToInt32(Console.ReadLine()));
+    Console.WriteLine("\r\nAbaixo segue a nossa lista de itens:");
+    
+    Item espada = new Item(nome:"Espada de madeira", descricao:"Espada frágil. Recomendada para iniciantes",moedas: 5, qnt: 10, cat:arma);
+    carrinho.Estoque.Add(espada);
+    
+    Item espadaf = new Item(nome:"Espada de ferro", descricao:" espada mais resistente e afiada melhor do que a de madeira. Recomendada para jogadores medio",moedas: 10, qnt: 10, cat: arma);
+    carrinho.Estoque.Add(espadaf);
+
+    Item espadad = new Item(nome:"Espada de ouro", descricao:"A mais resistente e ela e a melhor espada",moedas: 25, qnt: 10, cat:arma);
+    carrinho.Estoque.Add(espadaou);
+
+    Item escudo = new Item(nome:"Escudo de madeira", descricao:"Escudo frágil. Recomendado para iniciantes",moedas: 5, qnt: 10, cat:proteçao);
+    carrinho.Estoque.Add(escudom);
+
+    Item escudof = new Item(nome:"Escudo de ferro", descricao:"ele e Muito pesado, porém muito resistente",moedas: 40, qnt: 10, cat:proteçao);
+    carrinho.Estoque.Add(escudof);
+
+    Item escudom = new Item(nome:"Escudo mágico", descricao:" este é o melhor escudo que nos tem.muito Leve e resistente, o ideal para um verdadeiro guerreiro.",moedas: 100, qnt: 10, cat:proteçao);
+    carrinho.Estoque.Add(escudomc);
+
+    Item botas = new Item(nome:"Bota simple", descricao:"Bota de couro normal. Recomendada para quem não quer molhar os pés",moedas: 2, qnt: 10,cat:calcado);
+    carrinho.Estoque.Add(botasm);
+
+    Item botae = new Item(nome:"Botas magica", descricao:"Fornecem um pouco mas de velocidade.",moedas: 25, qnt: 10,cat:calcado);
+    carrinho.Estoque.Add(botasmg);
+
+    Item botap = new Item(nome:"Botas voadoras", descricao:"ele foi feitas para voce voar pelos ceus",moedas: 150, qnt: 10,cat:calcado);
+    carrinho.Estoque.Add(botasvd);
+
+    Item pocaov = new Item(nome:"Pocao de Recupera a sua vida", descricao:"Recupera 100% do seu HP",moedas: 80, qnt: 10,cat:item);
+    carrinho.Estoque.Add(pocaovd);
+
+    Item pocaom = new Item(nome:"Pocao de pm", descricao:"Recupera 100% do seu pm",moedas: 50, qnt: 10,cat:item);
+    carrinho.Estoque.Add(pocaopm);
+
+    Item pergaminho = new Item(nome:"Pergaminho portátil", descricao:"Ideal para mágias rápidas durante a jornada",moedas: 590, qnt: 10,cat:item);
+    carrinho.Estoque.Add(pergaminho);
+
+    Item pergaminhos = new Item(nome:"Super pergaminho", descricao:"esse livro contem todos os feitiço que tem em todo o nosso jobo !",moedas: 1000, qnt: 10,cat:item);
+    carrinho.Estoque.Add(pergaminhos);
+
+
+    carrinho.ImprimirCarrinho();
+    
+    //espada.ImprimirItem();
+    
+    string alternativa;
+
+    do{
+      Cliente.ComprarItem(Cliente.compra(), carrinho.Estoque);
+      Console.Clear();
+      Cliente.ImprimirPersonagem();
+      Console.Write("\r\nDigite 'comprar' para comprar novamente ou qualquer outra coisa para fechar: ");
+      alternativa = Console.ReadLine();
+      carrinho.ImprimirCarrinho();
+    }
+    while(alternativa == "comprar");
+    if(alternativa != "comprar")
+    {
+      Console.WriteLine("\r\nOkay, " + Cliente.Nome + "!" + " open a porta e volte sempre!");
+    }
+  }
+}
+
+
+
+
+
+
+
+itens
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
+
+namespace LojaMagica
+{
+    public class Item
+    {
+        public string Nome;
+        public string Descricao;
+        public int Moedas;
+        public int Qnt;
+        public string cat;
+
+        public Item(string nome, string descricao, int moedas , int Qnt)
+        {
+            this.Nome = nome;
+            this.Descricao = descricao;
+            this.Moedas = moedas;
+            this.Qnt = qnt;
+            this.cat
+        }
+
+        public void ImprimirItem()
+        {
+             Console.WriteLine("Nome:\t\t{0}", this.Nome);
+            Console.WriteLine("Descrição:\t{0}", this.Descricao);
+            Console.WriteLine("Moedas:\t\t{0}", this.Moedas);
+            Console.WriteLine("Quantidade:\t{0}\r\n", this.Qnt);
+            Console.WriteLine("Categoria:\t{0}\r\n", this.cat);
+            Console.WriteLine("============================");
+        }
+
+    }
+}
+
+
+loja!!!!!!!!!!!!!!!!!!
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
+
+public class Loja
+{
+  public List<Item> Estoque = new List<Item> ();
+
+  public void Carrinho(Item item)
+  {
+    this.Estoque.Add(item);
+  }
+  public void ImprimirCarrinho()
+    {
+      foreach (var item in Estoque)
+      {
+        item.ImprimirItem();
+      }
+    }
+}
+
+  
+  
+  
+  personagem!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  
+  
+  using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text.RegularExpressions;
+
+public class Personagem 
+  {
+    public string Nome; 
+    public int moedas;
+    public List<Item> Inventario;
+
+    public Personagem (string nome, int moedas)
+    {
+      this.Nome = nome;
+      this.moedas = moedas;
+      this.Inventario = new List<Item>();
+    }
+
+    public void ImprimirPersonagem()
+    {
+      Console.WriteLine("\r\nNome:\t\t{0}", this.Nome);
+      Console.WriteLine("Moedas:\t\t{0}", this.moedas);
+      Console.Write("Inventário:\t{");
+      foreach (var item in Inventario)
+      {
+        Console.Write("{0}, ", item.Nome);
+      }
+       Console.WriteLine("]");
+       Console.WriteLine("============================");
+      
+    }
+
+    public void ComprarItem(string compra,List<Item> Estoque)
+    {
+      foreach (var p in Estoque)
+      {
+        if(p.Nome == compra)
+        {
+          if (this.Florim > p.Florim)
+          {
+            this.Florim = this.Florim - p.Florim;
+            this.Inventario.Add(p);
+          }
+          else
+          {
+            Console.WriteLine("\r\n estou falido!!!! !");
+          }     
+        }
+      }
+    }
+
+    public string compra()
+    {
+      string compra;
+      Console.Write("\r\nQuero comprar: ");
+      compra = Console.ReadLine();
+      return compra;
+    }
+
+  }
+  
+  
